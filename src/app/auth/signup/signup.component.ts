@@ -12,27 +12,9 @@ export class SignupComponent implements OnInit {
   isLoading = false;
   signupData:SignupData
   error:string=null
-  constructor(private authService:AuthService) { }
+  constructor() { }
   
-  signup(form:NgForm){
-    // console.log(form.value);
-    if(!form.valid){
-      return
-    }
-    this.isLoading=true
-    this.authService.signup(this.signupData).subscribe(
-      res=>{
-        console.log(res);
-        this.isLoading=false;
-      },
-      errMsg=>{
-        console.log(errMsg);
-        this.error=errMsg
-        this.isLoading=false;
-      }
-    )
-      
-  }
+  
 
   ngOnInit(): void {
   }
