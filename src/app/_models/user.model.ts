@@ -20,21 +20,23 @@ export interface SignUpResponse{
 
 export interface LoginResponse{
     id:string,
-    token:string
+    email:string,
+    token:string,
+    expiresIn:string
 }
 
 export class User{
     
     constructor(
         public id:string,
-        public email:string,
+        // public email:string,
         private _token:string,
-        private _tokenExpirationDate:Date
+        // private _tokenExpirationDate:Date
     ){}
     get token(){
-        if(!this._tokenExpirationDate || new Date() > this._tokenExpirationDate){
+        /* if(!this._tokenExpirationDate || new Date() > this._tokenExpirationDate){
             return null;
-        }
+        } */
         return this._token
     }
 }
