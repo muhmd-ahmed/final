@@ -12,38 +12,59 @@
   <div class="container">
     <div class="row d-flex justify-content-around">
       <div class="col-md-6 mb-5">
-        <form  class="p-5 bg-white" style="margin-top: -30vh"
+
+        <form  class="p-5 bg-white " style="margin-top: -30vh"
+        #signupForm="ngForm"
+        (ngSubmit)="signup(signupForm)"
         
         >
           <div class="row form-group">
             <div class="col-md-6 mb-3 mb-md-0">
               <label class="text-black" for="fname">First Name</label>
-              <input type="text" id="fname" class="form-control" />
+              <input type="text" id="fname" class="form-control" 
+              ngModel name="first-name" required #fname=ngModel
+              [ngClass]="{'alert-danger' : fname.invalid && fname.touched}"
+              />
+              <
             </div>
             <div class="col-md-6">
               <label class="text-black" for="lname">Last Name</label>
-              <input type="text" id="lname" class="form-control" />
+              <input type="text" id="lname" class="form-control" 
+              ngModel name="last-name" required #lname=ngModel
+              [ngClass]="{'alert-danger' : lname.invalid && lname.touched}"
+              />
             </div>
           </div>
 
           <div class="row form-group">
             <div class="col-md-12">
               <label class="text-black" for="email">Email</label>
-              <input type="email" id="email" class="form-control" />
+              <input type="email" id="email" class="form-control" ngModel name="email" required email #email=ngModel
+              [ngClass]="{'alert-danger' : email.invalid && email.touched}"
+              />
             </div>
           </div>
 
           <div class="row form-group">
             <div class="col-md-12">
               <label class="text-black" for="pass1">Password</label>
-              <input type="password" id="pass1" class="form-control" />
+              <input type="password" id="pass1" class="form-control" 
+              ngModel name="pass1" required minlength="8"
+              #pass1='ngModel' 
+              [ngClass]="{'alert-danger' : pass1.invalid && pass1.touched}"
+              />
             </div>
           </div>
 
-          <div class="row form-group">
+          <div class="row form-group ">
             <div class="col-md-12">
-              <label class="text-black" for="pass2">Re-type Password</label>
-              <input type="password" id="pass2" class="form-control" />
+              <label class="text-black " for="pass2">Re-type Password</label>
+              <input type="password" id="pass2" class="form-control "  
+              [ngClass]="{'alert-danger' : pass2.invalid && pass2.touched}"
+              ngModel name="pass2" required #pass2='ngModel' 
+              [pattern]="pass1.value"
+              />
+              
             </div>
           </div>
 
@@ -53,8 +74,9 @@
                 type="submit"
                 value="Sign Up"
                 class="btn btn-primary btn-lg text-white"
-              />
-            </div>
+                [disabled]="!signupForm.valid"
+                />
+              </div>
 
             <div class="col-md-6 ">
               Do have an account?
