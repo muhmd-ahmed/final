@@ -13,6 +13,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ListingComponent } from './listing/listing.component';
 import { FormsModule } from '@angular/forms';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     OverlayComponent,
     LoginComponent,
-    ListingComponent
+    ListingComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,15 +9,25 @@
 </app-overlay>
 
 <div class="site-section bg-light">
-  <div class="container">
-    <div class="row d-flex justify-content-around">
-      <div class="col-md-6 mb-5">
+  <div class="container" style="margin-top: -30vh">
+    <div class="row d-flex justify-content-center">
+      <div class="col-*">
+        <div  *ngIf="isLoading">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-around" >
+      <div class="col-md-6 mb-5"  >
 
-        <form  class="p-5 bg-white " style="margin-top: -30vh"
+        <form  class="p-5 bg-white " 
         #signupForm="ngForm"
         (ngSubmit)="signup(signupForm)"
-        
+        *ngIf="!isLoading"
         >
+        <div class="alert alert-danger" *ngIf="error">
+          {{error}}
+        </div>
         <!-- first name and last name -->
           <div class="row form-group">
             <div class="col-md-6 mb-3 mb-md-0">
