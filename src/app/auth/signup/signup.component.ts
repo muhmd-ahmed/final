@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit {
 
   signup(form:NgForm){
-    console.log(form);
+    console.log(form.value);
     
   }
   constructor() { }

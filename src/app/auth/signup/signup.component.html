@@ -18,44 +18,95 @@
         (ngSubmit)="signup(signupForm)"
         
         >
+        <!-- first name and last name -->
           <div class="row form-group">
             <div class="col-md-6 mb-3 mb-md-0">
               <label class="text-black" for="fname">First Name</label>
               <input type="text" id="fname" class="form-control" 
-              ngModel name="first-name" required #fname=ngModel
+              ngModel name="fname" 
+              required pattern="^[a-zA-Z_][a-zA-Z0-9_]*$"
+              minlength="3"
+              #fname=ngModel
               [ngClass]="{'alert-danger' : fname.invalid && fname.touched}"
               />
-              <
+              <div>
+                <div class="text-danger small" *ngIf="fname.errors?.required && fname.touched">
+                  - Your First Name is required.
+                </div>
+                <div class="text-danger small" *ngIf=" fname.errors?.pattern && fname.touched">
+                  - Your First Name must start with letters or underscores only.
+                </div>
+                <div class="text-danger small" *ngIf="fname.errors?.minlength && fname.touched">
+                  - Your First Name must be 3 characters at least.
+                </div>
+              </div>
             </div>
             <div class="col-md-6">
               <label class="text-black" for="lname">Last Name</label>
               <input type="text" id="lname" class="form-control" 
-              ngModel name="last-name" required #lname=ngModel
+              ngModel name="lname" 
+              required pattern="^[a-zA-Z_][a-zA-Z0-9_]*$" 
+              minlength="3"
+              #lname=ngModel
               [ngClass]="{'alert-danger' : lname.invalid && lname.touched}"
               />
+              <div>
+                <div class="text-danger small" *ngIf="lname.errors?.required && lname.touched">
+                  - Your Last Name is required.
+                </div>
+                <div class="text-danger small" *ngIf=" lname.errors?.pattern && lname.touched">
+                  - Your Last Name must start with letters or underscores only.
+                </div>
+                <div class="text-danger small" *ngIf="lname.errors?.minlength && lname.touched">
+                  - Your Last Name must be 3 characters at least.
+                </div>
+              </div>
             </div>
           </div>
+        <!-- email -->
 
           <div class="row form-group">
             <div class="col-md-12">
               <label class="text-black" for="email">Email</label>
-              <input type="email" id="email" class="form-control" ngModel name="email" required email #email=ngModel
+              <input type="email" id="email" class="form-control" 
+              ngModel name="email" 
+              required email 
+              #email=ngModel
               [ngClass]="{'alert-danger' : email.invalid && email.touched}"
               />
+              <div>
+                <div class="text-danger small" *ngIf="email.errors?.required && email.touched">
+                  - Your Email is required.
+                </div>
+                <div class="text-danger small" *ngIf=" email.errors?.email && email.touched">
+                  - Your Email must be valid.
+                </div>
+                
+              </div>
             </div>
           </div>
+        <!-- password -->
 
           <div class="row form-group">
             <div class="col-md-12">
-              <label class="text-black" for="pass1">Password</label>
+              <label class="text-black " for="pass1">Password</label>
               <input type="password" id="pass1" class="form-control" 
               ngModel name="pass1" required minlength="8"
               #pass1='ngModel' 
               [ngClass]="{'alert-danger' : pass1.invalid && pass1.touched}"
               />
+              <div>
+                <div class="text-danger small" *ngIf="pass1.errors?.required && pass1.touched">
+                  - Your Password is required.
+                </div>
+                <div class="text-danger small" *ngIf=" pass1.errors?.minlength && pass1.touched">
+                  - Your Password must be 8 at least.
+                </div>
+                
+              </div>
             </div>
           </div>
-
+        <!-- retype password -->
           <div class="row form-group ">
             <div class="col-md-12">
               <label class="text-black " for="pass2">Re-type Password</label>
@@ -64,10 +115,18 @@
               ngModel name="pass2" required #pass2='ngModel' 
               [pattern]="pass1.value"
               />
-              
+              <div>
+                <div class="text-danger small" *ngIf="pass2.errors?.required && pass2.touched">
+                  - Your Password is required.
+                </div>
+                <div class="text-danger small" *ngIf=" pass2.errors?.pattern && pass2.touched">
+                  - Two Passwords must be exact.
+                </div>
+                
+              </div>
             </div>
           </div>
-
+          <!-- submit -->
           <div class="row form-group align-items-center justify-content-between ">
             <div class="col-md-6">
               <input

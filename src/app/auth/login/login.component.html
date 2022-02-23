@@ -25,7 +25,18 @@
                 name="email"
                 required
                 email
+                #email=ngModel
+                [ngClass]="{'alert-danger' : email.invalid && email.touched}"
                 />
+                <div>
+                  <div class="text-danger small" *ngIf="email.errors?.required && email.touched">
+                    - Your Email is required.
+                  </div>
+                  <div class="text-danger small" *ngIf=" email.errors?.email && email.touched">
+                    - Your Email must be valid.
+                  </div>
+                  
+                </div>
               </div>
             </div>
   
@@ -37,7 +48,18 @@
                 name="password"
                 required
                 minlength="8"
+                #pass1='ngModel' 
+              [ngClass]="{'alert-danger' : pass1.invalid && pass1.touched}"
                 />
+                <div>
+                  <div class="text-danger small" *ngIf="pass1.errors?.required && pass1.touched">
+                    - Your Password is required.
+                  </div>
+                  <div class="text-danger small" *ngIf=" pass1.errors?.minlength && pass1.touched">
+                    - Your Password must be 8 at least.
+                  </div>
+                  
+                </div>
               </div>
             </div>
   
