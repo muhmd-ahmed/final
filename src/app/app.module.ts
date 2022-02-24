@@ -15,6 +15,8 @@ import { ListingComponent } from './listing/listing.component';
 import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { AddApartmentComponent } from './apartment/addApartment/addApartment.component';
+import { EditApartmentComponent } from './apartment/editApartment/editApartment.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {  HttpClientModule } from '@angular/common/http';
     OverlayComponent,
     LoginComponent,
     ListingComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    AddApartmentComponent,
+    EditApartmentComponent
   ],
   imports: [
     BrowserModule,
