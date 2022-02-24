@@ -15,6 +15,7 @@ import { ListingComponent } from './listing/listing.component';
 import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {  HttpClientModule } from '@angular/common/http';
+import { ProductComponent } from './products/product/product.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {  HttpClientModule } from '@angular/common/http';
     OverlayComponent,
     LoginComponent,
     ListingComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

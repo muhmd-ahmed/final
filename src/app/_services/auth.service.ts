@@ -1,6 +1,6 @@
 import { Injectable,EventEmitter } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http'
-import { SignUpResponse, SignupData, LoginData,LoginResponse, User } from '../_models/user.model';
+import { SignUpResponse, SignupData, LoginData,LoginResponse, User, SignIn } from '../_models/user.model';
 import { catchError, Subject, tap, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,7 @@ export class AuthService {
   isAuth :EventEmitter<boolean> = new EventEmitter<boolean>()
   /* --------------------------- signup */
   signup(signupData:SignupData){
-    return this.http.post<{
-      id?: string,
-      token?:string,
-      error?:string
-    }>('https://reqres.in/api/register',
+    return this.http.post<SignIn>('https://reqres.in/api/register',
     {
       "email": "eve.holt@reqres.in",
       "password": "pistol"
@@ -40,11 +36,7 @@ export class AuthService {
 
 /* --------------------- login */
   login(loginData:LoginData){
-    return this.http.post<{
-      id?: string,
-      token?:string,
-      error?:string
-    }>('https://reqres.in/api/login',
+    return this.http.post<SignIn>('https://reqres.in/api/login',
     {
       "email": "eve.holt@reqres.in",
       "password": "cityslicka"
