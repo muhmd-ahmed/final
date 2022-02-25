@@ -11,13 +11,22 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ListingComponent } from './listing/listing.component';
+import { ListingComponent } from './listing/listing.component'
 import { FormsModule } from '@angular/forms';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {  HttpClientModule } from '@angular/common/http';
+
+import { ApartmentDetailsComponent } from './apartment-details/apartment-details.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { AddApartmentComponent } from './apartment/add-apartment/add-apartment.component';
+import { EditApartmentComponent } from './apartment/edit-apartment/edit-apartment.component';
+
 import { AddApartmentComponent } from './apartment/addApartment/addApartment.component';
 import { EditApartmentComponent } from './apartment/editApartment/editApartment.component';
 import { ProductComponent } from './products/product/product.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +42,14 @@ import { ProductComponent } from './products/product/product.component';
     LoginComponent,
     ListingComponent,
     LoadingSpinnerComponent,
+
+    ApartmentDetailsComponent,
+    ProfileComponent,
+    UsersComponent,
+    EditUserComponent,
+    AddApartmentComponent,
+    EditApartmentComponent
+
     AddApartmentComponent,
     EditApartmentComponent,
     ProductComponent

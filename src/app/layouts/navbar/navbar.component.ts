@@ -7,8 +7,11 @@ import { AuthService } from 'src/app/_services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
-  isLogin =false;
+
+export class NavbarComponent implements OnInit {
+  isLogin =true;
+
+
   current='home';
   userSub : Subscription
   changeActive(active:string){
