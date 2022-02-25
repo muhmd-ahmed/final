@@ -40,3 +40,26 @@ export class User{
         return this._token
     }
 }
+
+export interface SignIn {
+
+    id?: string,
+    token?:string,
+    error?:string
+  
+}
+
+export interface contact { 
+    fname: string,
+    lname: string,
+    email: string,
+    subject: string,
+    message: string 
+}
+
+export interface product {
+    name: string,
+    slug: string,
+    description: string,
+    price: number
+}

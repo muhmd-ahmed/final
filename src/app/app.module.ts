@@ -17,6 +17,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
 import {  HttpClientModule } from '@angular/common/http';
 import { AddApartmentComponent } from './apartment/addApartment/addApartment.component';
 import { EditApartmentComponent } from './apartment/editApartment/editApartment.component';
+import { ProductComponent } from './products/product/product.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EditApartmentComponent } from './apartment/editApartment/editApartment.
     ListingComponent,
     LoadingSpinnerComponent,
     AddApartmentComponent,
-    EditApartmentComponent
+    EditApartmentComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
