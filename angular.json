@@ -39,7 +39,16 @@
               "src/assets/js/aos.js",
               "src/assets/js/rangeslider.min.js",
               "src/assets/js/typed.js",
-              "src/assets/js/main.js"
+              "src/assets/js/main.js",
+
+              "src/assets/assets_admin/js/jquery-3.5.1.min.js",
+              "src/assets/assets_admin/js/popper.min.js",
+              "src/assets/assets_admin/js/bootstrap.min.js",
+              "src/assets/assets_admin/js/moment.min.js",
+              "src/assets/assets_admin/js/select2.min.js",
+              "src/assets/assets_admin/plugins/slimscroll/jquery.slimscroll.min.js",
+              "src/assets/assets_admin/js/bootstrap-datetimepicker.min.js",
+              "src/assets/assets_admin/js/script.js"
             ]
           },
           "configurations": {

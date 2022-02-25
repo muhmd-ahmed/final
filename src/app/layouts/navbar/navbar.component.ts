@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  isLogin =false;
+  isLogin =true;
   current='home';
 
   changeActive(active:string){
