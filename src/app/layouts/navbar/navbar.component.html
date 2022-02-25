@@ -43,17 +43,22 @@
                   </li>
                 </ul>
               </li> -->
+
               <li [ngClass]="{'active':current=='find'}" 
               (click)='changeActive("find")'>
                 <a routerLink="/find"><span>Find</span></a>
+
+              
               </li>
               <li [ngClass]="{'active':current=='about'}" 
               (click)='changeActive("about")'>
                 <a routerLink="about"><span>About</span></a>
               </li>
+
               <li  [ngClass]="{'active':current=='/apartment/add'}" 
               (click)='changeActive("/apartment/add")'>
                 <a routerLink="/apartment/add"><span>Add Appartment</span></a>
+
               </li>
               <li  [ngClass]="{'active':current=='contact'}" 
               (click)='changeActive("contact")'> 
@@ -76,7 +81,7 @@
                     <li><a class="dropdown-item" routerLink="/apartment/add">Add Appartment</a></li>
                     <li><a class="dropdown-item" routerLink="/apartment/edit">Edit Appartment</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" >Sign out</a></li>
+                    <li><a class="dropdown-item" (click)="signout()" >Sign out</a></li>
                 </ul>
               </li>
             </ul>

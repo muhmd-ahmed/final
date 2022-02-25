@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http'
-import { SignUpResponse, SignupData, LoginData,LoginResponse, User } from '../_models/user.model';
+import { Injectable,EventEmitter } from '@angular/core';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http'
+import { SignUpResponse, SignupData, LoginData,LoginResponse, User, SignIn } from '../_models/user.model';
 import { catchError, Subject, tap, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -10,24 +10,49 @@ export class AuthService {
   constructor(private http:HttpClient) { }
 
   user = new Subject <User>();
-
-  signup(user:SignupData){
-    return this.http.post<SignUpResponse>('',
+  
+  isAuth :EventEmitter<boolean> = new EventEmitter<boolean>()
+  /* --------------------------- signup */
+  signup(signupData:SignupData){
+    return this.http.post<SignIn>('https://reqres.in/api/register',
     {
-      firstName:user.firstName,
-      lastName:user.lastName,
-      email:user.email,
-      password:user.password
-    }).pipe(
+      "email": "eve.holt@reqres.in",
+      "password": "pistol"
+      /* "email":signupData.email,
+      "password":signupData.password */
+  }).pipe(
       catchError(this.handleError)
+      ,
+      tap(res=>{
+        // expiresIn -> seconds
+        // const expirationDate = new Date(new Date().getTime() + +res.expiresIn);
+        const user = new User(res.id, res.token)
+        this.user.next(user);
+        
+        
+      })
     )
   }
-  login(data:LoginData){
-    return this.http.post<LoginResponse>('',
+
+/* --------------------- login */
+  login(loginData:LoginData){
+    return this.http.post<SignIn>('https://reqres.in/api/login',
     {
-      email:data.email,
-      password:data.password
-    }).pipe(catchError(this.handleError))
+      "email": "eve.holt@reqres.in",
+      "password": "cityslicka"
+      /* "email":loginData.email,
+      "password":loginData.password */
+  }).pipe(
+      catchError(this.handleError)
+      ,
+      tap(res=>{
+        // expiresIn -> seconds
+        // const expirationDate = new Date(new Date().getTime() + +res.expiresIn);
+        const user = new User(res.id, res.token)
+        this.user.next(user);
+        this.isAuth.emit(true)
+      })
+      )
   }
 
   private handleError(err:HttpErrorResponse){
@@ -35,10 +60,10 @@ export class AuthService {
         if(!err.error ){
           return throwError(()=> new Error(errMsg));
         }
-        switch(err.error){
+        switch(err.message){
           
           default:
-            errMsg = 'An error occurred!'
+            errMsg = err.error.error
 
         }
         return throwError(()=>new Error(errMsg))
