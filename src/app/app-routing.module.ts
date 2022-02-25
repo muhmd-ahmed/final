@@ -8,7 +8,6 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ListingComponent } from './listing/listing.component';
-import { ProductComponent } from './products/product/product.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
@@ -25,7 +24,6 @@ const routes: Routes = [
   {path:'listings', component:ListingComponent, 
   // canActivate:[AuthGuard]
 },
-{path:'product',component: ProductComponent},
 
 ];
 
